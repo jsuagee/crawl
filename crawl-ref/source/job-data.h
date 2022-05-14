@@ -158,8 +158,8 @@ static const map<job_type, job_def> job_data =
 { JOB_EARTH_ELEMENTALIST, {
     "EE", "Earth Elementalist",
     0, 7, 5,
-    { SP_DEEP_ELF, SP_DEEP_DWARF, SP_SPRIGGAN, SP_GARGOYLE, SP_DEMIGOD,
-      SP_GHOUL, SP_OCTOPODE, },
+    { SP_DEEP_ELF, SP_SPRIGGAN, SP_GARGOYLE, SP_DEMIGOD, SP_GHOUL,
+      SP_OCTOPODE, },
     {
         SPELL_SANDBLAST,
         SPELL_PASSWALL,
@@ -221,8 +221,7 @@ static const map<job_type, job_def> job_data =
 { JOB_GLADIATOR, {
     "Gl", "Gladiator",
     6, 0, 6,
-    { SP_DEEP_DWARF, SP_HILL_ORC, SP_MERFOLK, SP_TROLL, SP_GARGOYLE,
-      SP_GNOLL, },
+    { SP_STAR, SP_HILL_ORC, SP_MERFOLK, SP_TROLL, SP_GARGOYLE, SP_GNOLL, },
     { },
     { "leather armour", "helmet", "throwing net q:3" },
     WCHOICE_GOOD,
@@ -284,7 +283,7 @@ static const map<job_type, job_def> job_data =
 { JOB_NECROMANCER, {
     "Ne", "Necromancer",
     0, 7, 5,
-    { SP_DEEP_ELF, SP_DEEP_DWARF, SP_HILL_ORC, SP_DEMONSPAWN, SP_MUMMY,
+    { SP_DEEP_ELF, SP_DJINNI, SP_HILL_ORC, SP_DEMONSPAWN, SP_MUMMY,
       SP_VAMPIRE, },
     {
         SPELL_NECROTIZE,

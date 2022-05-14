@@ -5042,7 +5042,7 @@ static void _flay(const monster &caster, actor &defender, int damage)
         }
     }
 
-    // Due to Deep Dwarf damage shaving, the player may take less than the intended
+    // Due to Star damage shaving, the player may take less than the intended
     // amount of damage. Keep track of the actual amount of damage done by comparing
     // hp before and after the player is hurt; use this as the actual value for
     // flay damage to prevent the player from regaining extra hp when it wears off
