@@ -84,6 +84,7 @@
  #include "tilepick.h"
  #include "tileview.h"
 #endif
+#include "timed-effects.h" // bezotting_level
 #include "transform.h"
 #include "traps.h"
 #include "travel.h"
@@ -710,6 +711,9 @@ void update_vision_range()
     // Halo and umbra radius scale with you.normal_vision, so to avoid
     // penalizing players with low LOS from items, don't shrink normal_vision.
     you.current_vision = you.normal_vision;
+
+    if (you.species == SP_STAR)
+        you.current_vision -= max(0, (bezotting_level() - 1) * 2); // spooky fx
 
     // scarf of shadows gives -1.
     if (you.wearing_ego(EQ_CLOAK, SPARM_SHADOWS))

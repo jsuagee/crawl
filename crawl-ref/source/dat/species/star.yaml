@@ -1,0 +1,74 @@
+enum: SP_STAR
+monster: MONS_ORB_OF_FIRE
+name: "Star"
+short_name: "Sa"
+adjective: "Starry"
+difficulty: Intermediate
+difficulty_priority: 20
+aptitudes:
+  xp: 0
+  hp: 1
+  mp_mod: 1
+  mr: 5
+  long_blades: 1
+  maces_and_flails: 1
+  axes: 1
+  polearms: 1
+  staves: 1
+  throwing: 1
+  armour: 1
+  dodging: 1
+  stealth: -3
+  shields: 1
+  unarmed_combat: 1
+  spellcasting: 1
+  conjurations: 1
+  hexes: 1
+  summoning: 1
+  translocations: 1
+  transmutations: 1
+  fire_magic: 1
+  air_magic: 1
+  earth_magic: 1
+  poison_magic: 1
+  invocations: 2
+  evocations: 1
+str: 9
+int: 9
+dex: 9
+levelup_stat_frequency: 3
+levelup_stats:
+  - str
+  - int
+  - dex
+mutations:
+  1:
+    MUT_SHORT_LIFESPAN: 1
+    MUT_PASSIVE_MAPPING: 1
+  6:
+    MUT_MANA_REGENERATION: 1
+  9:
+    MUT_PASSIVE_MAPPING: 1
+  15:
+    MUT_REGENERATION: 1
+  18:
+    MUT_PASSIVE_MAPPING: 1
+fake_mutations:
+  - long: You are resistant to damage.
+    short: damage resistance
+recommended_jobs:
+  - JOB_GLADIATOR
+  - JOB_DELVER
+  - JOB_WANDERER
+  - JOB_CINDER_ACOLYTE
+  - JOB_EARTH_ELEMENTALIST
+recommended_weapons:
+  - SK_MACES_FLAILS
+  - SK_POLEARMS
+  - SK_AXES
+  - SK_STAVES
+  - SK_LONG_BLADES
+  - SK_CROSSBOWS
+  - SK_SLINGS
+  - SK_BOWS
+  - SK_THROWING
