@@ -777,6 +777,11 @@ otherworldly mutation
 You are foreign to this world, easily perceived by dark forces. You have only
 one-tenth the normal time on each dungeon floor before Zot finds and ends you.
 %%%%
+glowing mutation
+
+You glow in the dark. Foes hit you more often, and your outline is easily seen
+even while you are otherwise invisible.
+%%%%
 # ------ Ru sacrifices ------
 inability to drink while threatened mutation
 

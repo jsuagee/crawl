@@ -2295,6 +2295,12 @@ static const mutation_def mut_data[] =
   {"You feel long-lived.", "", ""},
 },
 
+{ MUT_GLOWING, 0, 1, mutflag::bad, true, "glowing",
+  {"You glow in the dark.", "", ""},
+  {"Your body begins glowing.", "", ""},
+  {"You feel a bit dim.", "", ""},
+},
+
 };
 
 static const mutation_category_def category_mut_data[] =

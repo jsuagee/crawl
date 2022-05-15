@@ -7059,6 +7059,7 @@ bool player::backlit(bool self_halo) const
            || duration[DUR_CORONA]
            || duration[DUR_LIQUID_FLAMES]
            || duration[DUR_QUAD_DAMAGE]
+           || you.has_mutation(MUT_GLOWING)
            || !umbraed() && haloed() && (self_halo || halo_radius() == -1);
 }
 

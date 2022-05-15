@@ -44,6 +44,7 @@ levelup_stats:
 mutations:
   1:
     MUT_SHORT_LIFESPAN: 1
+    MUT_GLOWING: 1
     MUT_PASSIVE_MAPPING: 1
   6:
     MUT_MANA_REGENERATION: 1
@@ -58,9 +59,9 @@ fake_mutations:
     short: damage resistance
 recommended_jobs:
   - JOB_GLADIATOR
-  - JOB_DELVER
   - JOB_WANDERER
   - JOB_CINDER_ACOLYTE
+  - JOB_TRANSMUTER
   - JOB_EARTH_ELEMENTALIST
 recommended_weapons:
   - SK_MACES_FLAILS
