@@ -1020,8 +1020,8 @@ void flash_view_delay(use_animation_type a, colour_t colour, int flash_delay,
 
 static void _do_explore_healing()
 {
-    // Full heal in, on average, 270 tiles.
-    const int healing = div_rand_round(random2(you.hp_max), 135);
+    // Full heal in, on average, 540 tiles. (half for MP.)
+    const int healing = div_rand_round(random2(you.hp_max), 270);
     if (healing && you.hp < you.hp_max)
         dprf("healing %d", healing);
     inc_hp(healing);
