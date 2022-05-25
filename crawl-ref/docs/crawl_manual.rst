@@ -1747,11 +1747,11 @@ Ogres (Og)
 
 Star (Sa)
   Stars are the people of the heavens, fallen to earth. They possess exceptional
-  skills, resistance to harm, and an uncanny sense for the space around them. At
-  higher levels, they begin to quickly regenerate magic and health. However, as
-  creatures clearly not native to the world, they are easy prey for the dark
-  forces that hunt adventurers - they have one-tenth as much time as normal before
-  Zot finds them. (See the section on 'Zot' for more.)
+  skills, an uncanny sense for the space around them, and the ability to recover
+  health and magic as they explore the dungeon. However, as creatures clearly not
+  native to the world, they are easy prey for the dark forces that hunt adventurers
+  - they have one-tenth as much time as normal before Zot finds them. (See the
+  section on 'Zot' for more.)
 
 Advanced Species
 ================

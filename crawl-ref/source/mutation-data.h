@@ -2301,6 +2301,12 @@ static const mutation_def mut_data[] =
   {"You feel a bit dim.", "", ""},
 },
 
+{ MUT_EXPLORE_REGEN, 0, 1, mutflag::good, false, "explore regen",
+  {"You regain HP and MP as you explore.", "", ""},
+  {"You feel a fierce wanderlust.", "", ""},
+  {"You feel like a homebody.", "", ""},
+},
+
 };
 
 static const mutation_category_def category_mut_data[] =
