@@ -4201,10 +4201,12 @@ int get_player_poisoning()
 {
     if (player_res_poison() >= 3)
         return 0;
+#if TAG_MAJOR_VERSION == 34
     // Approximate the effect of damage shaving by giving the first
     // 25 points of poison damage for 'free'
     if (can_shave_damage())
         return max(0, (you.duration[DUR_POISONING] / 1000) - 25);
+#endif
     return you.duration[DUR_POISONING] / 1000;
 }
 
@@ -4284,6 +4286,7 @@ void handle_player_poison(int delay)
     int dmg = (you.duration[DUR_POISONING] / 1000)
                - ((you.duration[DUR_POISONING] - decrease) / 1000);
 
+#if TAG_MAJOR_VERSION == 34
     // Approximate old damage shaving by giving immunity to small amounts
     // of poison. Stronger poison will do the same damage as for non-DD
     // until it goes below the threshold, which is a bit weird, but
@@ -4295,6 +4298,7 @@ void handle_player_poison(int delay)
         if (dmg < 0)
             dmg = 0;
     }
+#endif
 
     msg_channel_type channel = MSGCH_PLAIN;
     const char *adj = "";
@@ -4363,18 +4367,28 @@ int poison_survival()
         return you.hp;
     const int rr = player_regen();
     const bool chei = have_passive(passive_t::slow_poison);
+#if TAG_MAJOR_VERSION == 34
     const bool dd = can_shave_damage();
+#endif
     const int amount = you.duration[DUR_POISONING];
     const double full_aut = _poison_dur_to_aut(amount);
     // Calculate the poison amount at which regen starts to beat poison.
     double min_poison_rate = poison_min_hp_aut;
+#if TAG_MAJOR_VERSION == 34
     if (dd)
         min_poison_rate = 25.0/poison_denom;
+#endif
     if (chei)
         min_poison_rate /= 1.5;
     int regen_beats_poison;
     if (rr <= (int) min_poison_rate)
-        regen_beats_poison = dd ? 25000 : 0;
+    {
+        regen_beats_poison =
+#if TAG_MAJOR_VERSION == 34
+         dd ? 25000 :
+#endif
+              0;
+    }
     else
     {
         regen_beats_poison = poison_denom * 10.0 * rr;
