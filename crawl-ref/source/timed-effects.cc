@@ -1291,6 +1291,8 @@ void decr_zot_clock(bool extra_life)
         }
         zot = max(0, zot - ZOT_CLOCK_PER_FLOOR / div);
     }
+    if (you.species == SP_STAR)
+        update_vision_range();
 }
 
 static int _added_zot_time()
