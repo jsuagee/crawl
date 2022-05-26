@@ -6,12 +6,12 @@ adjective: "Starry"
 difficulty: Intermediate
 difficulty_priority: 20
 aptitudes:
-  xp: 0
+  xp: 1
   hp: 1
   mp_mod: 1
   mr: 5
   long_blades: 1
-  maces_and_flails: 1
+  maces_and_flails: 2
   axes: 1
   polearms: 1
   staves: 1
@@ -52,7 +52,7 @@ mutations:
   18:
     MUT_PASSIVE_MAPPING: 1
 recommended_jobs:
-  - JOB_GLADIATOR
+  - JOB_FIGHTER
   - JOB_WANDERER
   - JOB_CINDER_ACOLYTE
   - JOB_TRANSMUTER
