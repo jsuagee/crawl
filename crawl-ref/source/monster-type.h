@@ -529,6 +529,7 @@ enum monster_type                      // env.mons[].type
     MONS_RAGGED_HIEROPHANT,
     MONS_HALAZID_WARLOCK,
     MONS_SPECTATOR,
+    MONS_STAR,
 #endif
     MONS_KILLER_KLOWN,
     MONS_SHAPESHIFTER,
@@ -1171,6 +1172,7 @@ enum monster_type                      // env.mons[].type
     MONS_LODUL,
     MONS_VV,
     MONS_ZENATA,
+    MONS_STAR,
 #endif
 
     NUM_MONSTERS,               // used for polymorph

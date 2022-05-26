@@ -1,5 +1,5 @@
 enum: SP_STAR
-monster: MONS_ORB_OF_FIRE
+monster: MONS_STAR
 name: "Star"
 short_name: "Sa"
 adjective: "Starry"
