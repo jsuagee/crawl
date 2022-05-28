@@ -6,33 +6,40 @@ adjective: "Starry"
 difficulty: Intermediate
 difficulty_priority: 20
 aptitudes:
-  xp: 1
+  xp: 2
   hp: 1
   mp_mod: 1
   mr: 5
-  long_blades: 1
-  maces_and_flails: 2
-  axes: 1
-  polearms: 1
-  staves: 1
-  throwing: 1
-  armour: 1
-  dodging: 1
-  stealth: -3
-  shields: 1
-  unarmed_combat: 1
-  spellcasting: 1
-  conjurations: 1
-  hexes: 1
-  summoning: 1
-  translocations: 1
-  transmutations: 1
-  fire_magic: 1
-  air_magic: 1
-  earth_magic: 1
-  poison_magic: 1
-  invocations: 2
-  evocations: 1
+  fighting: 1
+  short_blades: 1
+  long_blades: 2
+  maces_and_flails: 3
+  axes: 2
+  polearms: 2
+  staves: 2
+  bows: 1
+  crossbows: 1
+  slings: 1
+  throwing: 2
+  armour: 2
+  dodging: 2
+  stealth: -2
+  shields: 2
+  unarmed_combat: 2
+  spellcasting: 2
+  conjurations: 2
+  hexes: 2
+  necromancy: 1
+  summoning: 2
+  translocations: 2
+  transmutations: 2
+  fire_magic: 2
+  ice_magic: 1
+  earth_magic: 2
+  air_magic: 2
+  poison_magic: 2
+  invocations: 3
+  evocations: 2
 str: 9
 int: 9
 dex: 9
