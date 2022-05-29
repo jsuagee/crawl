@@ -1908,7 +1908,11 @@ public:
     command_type cmd;
     GameMenu()
         : Menu(MF_SINGLESELECT | MF_ALLOW_FORMATTING
-                | MF_ARROWS_SELECT | MF_WRAP | MF_INIT_HOVER),
+                | MF_ARROWS_SELECT | MF_WRAP | MF_INIT_HOVER
+#ifdef USE_TILE_LOCAL
+                | MF_SPECIAL_MINUS // doll editor (why?)
+#endif
+                ),
           cmd(CMD_NO_CMD)
     {
         set_tag("game_menu");
@@ -1935,6 +1939,13 @@ public:
             }
             return true;
         };
+    }
+
+    bool skip_process_command(int keyin) override
+    {
+        if (keyin == '?')
+            return true; // hotkeyed
+        return Menu::skip_process_command(keyin);
     }
 
     void fill_entries()
