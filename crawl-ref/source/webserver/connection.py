@@ -52,6 +52,9 @@ class WebtilesSocketConnection(object):
         with warnings.catch_warnings():
             warnings.simplefilter("ignore")
             self.socketpath = os.tempnam(server_socket_path, "crawl")
+
+            # Using the value from config, the socketpath gets set simply to
+            # ./crawl  in the current (global?) directory.
         self.socket.bind(self.socketpath)
 
         # Install handler

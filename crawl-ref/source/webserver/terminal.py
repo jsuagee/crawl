@@ -46,6 +46,10 @@ class TerminalRecorder(object):
 
         self.pid, self.child_fd = pty.fork()
 
+        # Remember that from here on there are two parallel copies of
+        # this function running. One of them is the original and the other is
+        # the fork. So in the next line we need to filter what we do based
+        # on whether we're the original process or the fork:
         if self.pid == 0:
             # We're the child
             def handle_signal(signal, f):
@@ -81,6 +85,8 @@ class TerminalRecorder(object):
         # We're the parent
         os.close(errpipe_write)
 
+        # JTS
+        # What class is the io_loop? It's a tornado IOLoop object
         self.io_loop.add_handler(self.child_fd,
                                  self._handle_read,
                                  self.io_loop.ERROR | self.io_loop.READ)
@@ -90,6 +96,9 @@ class TerminalRecorder(object):
                                  self.io_loop.READ)
 
     def _handle_read(self, fd, events):
+        # JTS
+        # What is being read here is from the file descriptor of the
+        # terminal program crawl. That is output from the crawl program.
         if events & self.io_loop.READ:
             buf = os.read(fd, BUFSIZ)
 
@@ -129,6 +138,8 @@ class TerminalRecorder(object):
         self.ttyrec.write(data)
 
     def _do_output_callback(self):
+        # JTS
+        # Gets position of the end of the first line in the buffer
         pos = self.output_buffer.find("\n")
         while pos >= 0:
             line = self.output_buffer[:pos]
@@ -138,6 +149,11 @@ class TerminalRecorder(object):
                 if line[-1] == "\r": line = line[:-1]
 
                 if self.output_callback:
+                    # JTS
+                    # This would be the _on_process_output() method in the
+                    # CrawlProcessHandler object, which ultimately calls the
+                    # write_message() method of the CrawlWebSocket object.
+                    # This goes back to the player's browser.
                     self.output_callback(line)
 
             pos = self.output_buffer.find("\n")
@@ -192,8 +208,20 @@ class TerminalRecorder(object):
         return self.termsize
 
     def write_input(self, data):
+        # JTS
+        # self.poll() is polling to see that the process is still ongoing
+        # and hasn't terminated. If it is still ongoing self.poll() will
+        # return None.
         if self.poll() is not None: return
 
         while len(data) > 0:
+            # JTS
+            # self.child_fd is the file descriptor for the child process
+            # forked up in the _spawn() function, and is supposedly now in
+            # the middle of running the crawl program using
+            # os.execvpe()
+            # So this is writing the user's input commands directly into
+            # that terminal program.
+
             written = os.write(self.child_fd, data)
             data = data[written:]

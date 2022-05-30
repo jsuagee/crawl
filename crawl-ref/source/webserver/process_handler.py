@@ -443,6 +443,11 @@ class CrawlProcessHandlerBase(object):
 
         templ_path = os.path.join(self.client_path, "templates")
         loader = DynamicTemplateLoader.get(templ_path)
+
+        # JTS
+        # I think this sends the same html to all receivers including the primary player
+        # which I guess means that the terminal output of the crawl binary is formatted and
+        # stored in some file ("game.html") in the client_path directory.
         templ = loader.load("game.html")
         game_html = templ.generate(version = v)
         watcher.send_message("game_client", version = v, content = game_html)
@@ -521,6 +526,9 @@ class CrawlProcessHandlerBase(object):
         update_all_lobbys(self)
 
     def _base_call(self):
+        # JTS
+        # Returns the command used to start crawl in a terminal
+
         game = self.game_params
 
 
@@ -711,13 +719,21 @@ class CrawlProcessHandler(CrawlProcessHandlerBase):
             self.logger.info("Starting game.")
 
         try:
+            # JTS
+            # I think everything is wrapped inside of this TerminalRecorder object
             self.process = TerminalRecorder(call, self.ttyrec_filename,
                                             self._ttyrec_id_header(),
                                             self.logger, self.io_loop,
                                             config.recording_term_size)
             self.process.end_callback = self._on_process_end
+
+            # JTS
+            # These are the important callback methods
+            # output_callback will send output of crawl back to the player (or initiate
+            # that chain of events).
             self.process.output_callback = self._on_process_output
             self.process.activity_callback = self.note_activity
+
             self.process.error_callback = self._on_process_error
 
             self.gen_inprogress_lock()
@@ -741,7 +757,11 @@ class CrawlProcessHandler(CrawlProcessHandlerBase):
     def connect(self, socketpath, primary = False):
         self.socketpath = socketpath
         self.conn = WebtilesSocketConnection(self.io_loop, self.socketpath, self.logger)
+
+        # JTS
+        # This receives messages from the player and pushes it towards the
         self.conn.message_callback = self._on_socket_message
+
         self.conn.close_callback = self._on_socket_close
         self.conn.connect(primary)
 
@@ -815,6 +835,12 @@ class CrawlProcessHandler(CrawlProcessHandlerBase):
             self.conn.send_message('{"msg":"spectator_joined"}')
 
     def handle_input(self, msg):
+        # JTS
+        # Input commands were sent by the user to this function in json format
+        # and they need to be converted into utf8.
+        #
+        # msg object has fields "data" and "text"
+
         obj = json_decode(msg)
 
         if obj["msg"] == "input" and self.process:
@@ -826,6 +852,9 @@ class CrawlProcessHandler(CrawlProcessHandlerBase):
 
             data += obj.get("text", u"").encode("utf8")
 
+            # JTS
+            # self.process is a TerminalRecorder object. This is how input from the player
+            # is fed into the crawl program:
             self.process.write_input(data)
 
         elif obj["msg"] == "force_terminate":
@@ -847,6 +876,11 @@ class CrawlProcessHandler(CrawlProcessHandlerBase):
                         }))
 
     def _on_process_output(self, line):
+        # JTS
+        # This takes in updates that would be sent by the crawl binary to the terminal
+        # and then sends it to the receiver object that is the player.
+        # The receiver objects are CrawlWebSocket objects.
+
         self.check_where()
 
         try:
